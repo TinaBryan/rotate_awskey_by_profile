@@ -1,12 +1,11 @@
 #!/bin/bash
 
-#Enter your AWS User Name in the AWS_USER_NAME variable value prior to running script
-# ADD AWS USER NAME HERE
+# ENTER AWS USER NAME HERE
 read -p "please enter your aws username: " username
 AWS_USER_NAME=$username
 echo $AWS_USER_NAME
 
-# input the profile name of the credentials you are rotating
+# ENTER [PROFILE_NAME] OF KEYS TO ROTATE 
 read -p "please enter the .aws/credentials profile name to update or hit enter for default user: " user_profile
 echo $user_profile
 
