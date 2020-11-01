@@ -28,7 +28,7 @@ else
 read -p "please enter your aws username: " username
 AWS_USER_NAME=$username
 echo $AWS_USER_NAME
-if [ $AWS_USER_NAME == ""];
+if [ $AWS_USER_NAME == ""]
   then echo "You must enter username.. try again" && exit
 fi
 fi
@@ -42,7 +42,7 @@ echo $PROFILE_NAME
 # input the profile name of the credentials you are rotating
 read -p "please enter the .aws/credentials profile name to update or hit enter for default user: " user_profile
 # catch they entered nothing
-if [ $user_profile == ""];
+if [ $user_profile == ""]
   then user_profile="default"
 fi
 fi
@@ -52,7 +52,7 @@ echo "Getting the old Access Key ID for: $AWS_USER_NAME"
 #echo "old access key"
 OLD_ACCESS_KEY=$(aws iam list-access-keys --user-name "$AWS_USER_NAME" --output text | cut -f2)
 #echo $OLD_ACCESS_KEY
-if [ $(aws iam list-access-keys --user-name "$AWS_USER_NAME" --output text|wc -l) -gt 1 ];
+if [ $(aws iam list-access-keys --user-name "$AWS_USER_NAME" --output text|wc -l) -gt 1 ]
 then
 echo "****************************************************************************"
 echo "****************************************************************************"
@@ -92,11 +92,11 @@ echo "Setting the old Access Key to Inactive"
 $(aws iam update-access-key --access-key-id "$delete_old_access_key" --status Inactive --user-name "$AWS_USER_NAME")
 # prep to delete old access key
 inactive_access_key=$(aws iam list-access-keys --user-name "$AWS_USER_NAME" --output text | cut -f2)
-if [ "$3" == "y" ]; 
+if [ "$3" == "y" ]
 then
 $(aws iam delete-access-key --access-key "$delete_old_access_key" --user-name "$AWS_USER_NAME")
 else
-if [ "$3" == "n" ]; 
+if [ "$3" == "n" ] 
 then
 echo "auto-deletion skipped"
 else
