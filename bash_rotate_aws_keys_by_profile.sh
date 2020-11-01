@@ -38,7 +38,7 @@ user_profile="$2"
 else
 PROFILE_NAME=$(cat ~/.aws/credentials | grep -o '\[[^]]*\]')
 echo "list of current profiles."
-echo $PROFILE_NAME
+echo $PROFILE_NAME + "\n"
 # input the profile name of the credentials you are rotating
 read -p "please enter the .aws/credentials profile name to update or hit enter for default user: " user_profile
 # catch they entered nothing
