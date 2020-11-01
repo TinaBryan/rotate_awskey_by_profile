@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# ENTER AWS USER NAME HERE
+read -p "please enter your aws username: " username
+AWS_USER_NAME=$username
+echo $AWS_USER_NAME
+
+# ENTER [PROFILE_NAME] OF KEYS TO ROTATE 
 if [ "$#" -eq 0 ] || [ "$1" == "help" ] ;
 then
 echo "   "
