@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# ENTER AWS USER NAME HERE
-read -p "please enter your aws username: " username
-AWS_USER_NAME=$username
-echo $AWS_USER_NAME
 
-# ENTER [PROFILE_NAME] OF KEYS TO ROTATE 
+echo "SCRIPT TO ROTATE AWS ACCESS KEYS BY PROFILE"
+echo "   " 
 if [ "$#" -eq 0 ] || [ "$1" == "help" ] ;
 then
 echo "   "
@@ -20,12 +17,12 @@ echo "   "
 echo "leaving any or all arguments blank, will prompt you for those options"
 echo "   "
 fi
-#Enter your AWS User Name in the AWS_USER_NAME variable value prior to running script
-# ADD AWS USER NAME HERE
+
+# GETTING USER LOGIN INFO
 if [ "$1" ]; then
 AWS_USER_NAME=$1
 else
-read -p "please enter your aws username: " username
+read -p "Enter your aws username: " username
 AWS_USER_NAME=$username
 echo $AWS_USER_NAME
 if [ $AWS_USER_NAME == ""]
@@ -39,8 +36,9 @@ else
 PROFILE_NAME=$(cat ~/.aws/credentials | grep -o '\[[^]]*\]')
 echo "list of current profiles."
 echo $PROFILE_NAME + "\n"
-# input the profile name of the credentials you are rotating
-read -p "please enter the .aws/credentials profile name to update or hit enter for default user: " user_profile
+echo "   "
+
+read -p "Enter the profile name of the credentials you are rotating or hit enter for default user: " user_profile
 # catch they entered nothing
 if [ $user_profile == ""]
   then user_profile="default"
